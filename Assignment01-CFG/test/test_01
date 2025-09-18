@@ -1,0 +1,35 @@
+import pytest
+from cfg import get_path_lengths, reverse_postorder, find_back_edges, is_reducible
+
+def sample_cfg():
+    return {
+        "A": ["B", "C"],
+        "B": ["D"],
+        "C": ["D"],
+        "D": ["A", "E"],
+        "E": []
+    }
+
+def test_path_lengths():
+    cfg = sample_cfg()
+    lengths = get_path_lengths(cfg, "A")
+    assert lengths["A"] == 0
+    assert lengths["B"] == 1
+    assert lengths["C"] == 1
+    assert lengths["D"] == 2
+    assert lengths["E"] >= 0
+
+def test_reverse_postorder():
+    cfg = sample_cfg()
+    order = reverse_postorder(cfg, "A")
+    assert order[0] == "A"
+    assert "E" in order
+
+def test_back_edges():
+    cfg = sample_cfg()
+    back_edges = find_back_edges(cfg, "A")
+    assert ("D", "A") in back_edges
+
+def test_reducible():
+    cfg = sample_cfg()
+    assert is_reducible(cfg, "A")
