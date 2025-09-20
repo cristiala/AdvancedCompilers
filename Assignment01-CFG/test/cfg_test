@@ -1,5 +1,5 @@
 import pytest
-from cfg import get_path_lengths, reverse_postorder, find_back_edges, is_reducible
+from WorkingWithCFG import get_path_lengths, reverse_postorder, find_back_edges, is_reducible
 
 def sample_cfg():
     return {
