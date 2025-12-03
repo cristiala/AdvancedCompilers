@@ -96,3 +96,7 @@ B. Test Derived IV Elimination
 -o outputs/optimized_ive.ll \
 /home/clalarcon/llvm-tutor/test/riv_integer.ll
 ```
+
+## Test cases under /test
+- LICM_Chain.ll	--> Worklist Propagation
+- IVE_GEP.ll --> Pointer IV Elimination (Address)
